@@ -4,6 +4,21 @@
 ### Using
 - [dft.js](https://github.com/dirkarnez/dft.js)
 
+### TODOs
+- [jsxgraph/jsxgraph: JSXGraph is a cross-browser library for interactive geometry, function plotting, charting, and data visualization in a web browser.](https://github.com/jsxgraph/jsxgraph)
+
 ### Testing data
 - [`./data/EEsim.csv`](./data/EEsim.csv)
     - from [EEcircuit](https://eecircuit.com/)
+        - `.tran tstep tstop <tstart <tmax>> <uic>`
+        - [ngspice manual](https://ngspice.sourceforge.io/docs/ngspice-45-manual.pdf)
+### Spice
+```
+AC signal
+Vin a 0 dc 0 ac 1 sin(0 5 200)
+R1 a b 10k
+C1 b 0 10u
+.tran 10u 1
+*.ac dec 10 10 1000
+.end
+```

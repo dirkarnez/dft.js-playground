@@ -7,9 +7,60 @@
 <body>
     <a href="https://github.com/dirkarnez/dft.js-playground" target="_blank">dirkarnez/dft.js-playground</a><br>
     <div id="here"></div>
+    <input type="file" id="input" multiple>
     <script type="module">
         import { DFT } from "https://dirkarnez.github.io/dft.js/esm/dft.js";
-        debugger;
+        import * as a from "https://cdn.jsdelivr.net/npm/csv-parse@6.1.0/+esm";
+
+        function parseCsvString(inputCSVContent) {
+            return new Promise((res, rej) => {
+                a.parse(inputCSVContent, { columns: true }, function(err, data) {
+                    if(err){
+                        rej('Invalid CSV: '+err.message);
+                    } else {
+                        res(data);
+                    }
+                });
+            })
+        }
+  
+        let globalObj = undefined;
+        
+        const readText = file => new Promise((resolve) => {
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                resolve({fileName: file.name.substr(0, file.name.lastIndexOf(".")), content: event.target.result })
+            }
+            reader.readAsText(file)
+        });
+
+        const inputElement = document.getElementById("input");
+        inputElement.addEventListener("change", function () {
+        const fileList = this.files;
+            Promise
+            .all(
+                Array
+                .from(fileList)
+                .map(file => readText(file)
+                    .then(async fileWithMetadata => {
+                        const data = await parseCsvString(fileWithMetadata.content);
+                        const inputVoltage = data.map(element => element["v(a) "]).slice(0, 5000);
+                        const outputVoltage = data.map(element => element["v(b) "]);
+                        debugger;
+                        const samplingFrequency = 1 / Math.pow(10, -6)
+                        const ddd = DFT(inputVoltage, samplingFrequency);
+                        const eee = ddd.filter(d => d.amplitude > 1);
+                        debugger;
+                        return ({...fileWithMetadata, data})
+                    })
+                )
+            )
+            .then(obj => {
+                globalObj = obj;
+                console.table(globalObj);
+            });
+        }, false);
     </script>
 </body>
 </html>
