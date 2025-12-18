@@ -12,9 +12,9 @@
     - from [EEcircuit](https://eecircuit.com/)
         - `.tran tstep tstop <tstart <tmax>> <uic>`
         - [ngspice manual](https://ngspice.sourceforge.io/docs/ngspice-45-manual.pdf)
-### Spice
+### SPICE
 ```
-AC signal
+AC signal of 5 amplitude 200hz, 
 Vin a 0 dc 0 ac 1 sin(0 5 200)
 R1 a b 500
 C1 b 0 10u
@@ -22,4 +22,4 @@ C1 b 0 10u
 *.ac dec 10 10 1000
 .end
 ```
--  0.02/ (10*Math.pow(10, -6)) = 2000 samples
+-  0.02 / (10*Math.pow(10, -6)) = 2000 samples
