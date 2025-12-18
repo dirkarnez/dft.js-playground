@@ -1,11 +1,18 @@
 [dft.js-playground](https://dirkarnez.github.io/dft.js-playground/)
 ===================================================================
-
+Finally works (18 Dec 2025)
+ 
 ### Using
 - [dft.js](https://github.com/dirkarnez/dft.js)
 
 ### TODOs
 - [jsxgraph/jsxgraph: JSXGraph is a cross-browser library for interactive geometry, function plotting, charting, and data visualization in a web browser.](https://github.com/jsxgraph/jsxgraph)
+- [ ] Minimum sampling frequency calculator (1 / (working hz *  sample size) = sampling frequency)
+    - if do not have this, e.g. DFT will plot for example 198Hz / 202Hz for 200hz AC voltage, not good
+- [ ] Ngspice audio plguin
+
+### Notes
+- How about sine wave of different amplitude over time?
 
 ### Testing data
 - [`./data/EEsim.csv`](./data/EEsim.csv)
