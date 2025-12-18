@@ -51,7 +51,6 @@
                         const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
                         const ddd = DFT(inputVoltages, samplingFrequency);
                         const eee = ddd.filter(d => d.amplitude > 1);
-                        const 
                         debugger;
                         return ({...fileWithMetadata, data})
                     })
