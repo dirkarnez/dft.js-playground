@@ -45,12 +45,13 @@
                 .map(file => readText(file)
                     .then(async fileWithMetadata => {
                         const data = await parseCsvString(fileWithMetadata.content);
-                        const inputVoltage = data.map(element => element["v(a) "]).slice(0, 5000);
+                        const inputVoltages = data.map(element => element["v(a) "]);
                         const outputVoltage = data.map(element => element["v(b) "]);
                         debugger;
-                        const samplingFrequency = 1 / Math.pow(10, -6)
-                        const ddd = DFT(inputVoltage, samplingFrequency);
+                        const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
+                        const ddd = DFT(inputVoltages, samplingFrequency);
                         const eee = ddd.filter(d => d.amplitude > 1);
+                        const 
                         debugger;
                         return ({...fileWithMetadata, data})
                     })
