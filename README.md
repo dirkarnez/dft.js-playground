@@ -16,7 +16,7 @@
 ```
 AC signal
 Vin a 0 dc 0 ac 1 sin(0 5 200)
-R1 a b 10k
+R1 a b 500
 C1 b 0 10u
 .tran 10u 0.02
 *.ac dec 10 10 1000
