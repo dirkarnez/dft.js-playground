@@ -22,3 +22,4 @@ C1 b 0 10u
 *.ac dec 10 10 1000
 .end
 ```
+-  0.02/ (10*Math.pow(10, -6)) = 2000 samples
