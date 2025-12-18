@@ -49,7 +49,7 @@
                         const outputVoltage = data.map(element => element["v(b) "]);
                         const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
                         const ddd = DFT(inputVoltage, samplingFrequency);
-                        const eee = DFT(inputVoltage, samplingFrequency);
+                        const eee = DFT(outputVoltage, samplingFrequency);
                         debugger;
                         return ({...fileWithMetadata, data})
                     })
