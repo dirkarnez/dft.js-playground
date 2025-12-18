@@ -47,10 +47,9 @@
                         const data = await parseCsvString(fileWithMetadata.content);
                         const inputVoltage = data.map(element => element["v(a) "]);
                         const outputVoltage = data.map(element => element["v(b) "]);
-                        debugger;
                         const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
                         const ddd = DFT(inputVoltage, samplingFrequency);
-                        const eee = ddd.filter(d => d.amplitude > 1);
+                        const eee = DFT(inputVoltage, samplingFrequency);
                         debugger;
                         return ({...fileWithMetadata, data})
                     })
