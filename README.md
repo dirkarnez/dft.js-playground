@@ -9,7 +9,11 @@ Finally works (18 Dec 2025)
 - [jsxgraph/jsxgraph: JSXGraph is a cross-browser library for interactive geometry, function plotting, charting, and data visualization in a web browser.](https://github.com/jsxgraph/jsxgraph)
 - [ ] Minimum sampling frequency calculator (1 / (working hz *  sample size) = sampling frequency)
     - if do not have this, e.g. DFT will plot for example 198Hz / 202Hz for 200hz AC voltage, not good
-- [ ] Ngspice audio plguin
+    - 
+- [ ] Ngspice
+ - [ ] [eelab-dev/EEcircuit-engine: Simulation engine for EEcircuit](https://github.com/eelab-dev/EEcircuit-engine)
+ - [ ] add audio voltage source
+- [ ] Fundamental period calculation
 
 ### Notes
 - How about sine wave of different amplitude over time?
