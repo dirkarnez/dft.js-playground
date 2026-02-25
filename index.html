@@ -88,7 +88,12 @@
         
         const btnCalculate = document.getElementById("btn-calculate");
         btnCalculate.addEventListener("click", function () {
-            const values = JSON.parse(`[${document.getElementById("samples-input").value}]`);
+            let values = [];
+            try { 
+                values = JSON.parse(`[${document.getElementById("samples-input").value}]`);
+            } catch (e) {
+                alert("expect comma-separated values (without quotations)");
+            }
             debugger;
         
         
