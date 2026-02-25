@@ -30,6 +30,7 @@
     	<textarea id="samples-input" rows="10" placeholder="1,2,3,4"></textarea>
     </div>
     <input type="file" id="input" multiple>
+    <button type="button" id="btn-calculate">Calculate</button>
     <script type="module">
         import { DFT, DFT_Equation } from "https://dirkarnez.github.io/dft.js/esm/dft.js";
         import * as a from "https://cdn.jsdelivr.net/npm/csv-parse@6.1.0/+esm";
@@ -58,34 +59,40 @@
             }
             reader.readAsText(file)
         });
-
         
-
         const inputElement = document.getElementById("input");
         inputElement.addEventListener("change", function () {
-        const fileList = this.files;
+            const fileList = this.files;
             Promise
-            .all(
-                Array
-                .from(fileList)
-                .map(file => readText(file)
-                    .then(async fileWithMetadata => {
-                        const data = await parseCsvString(fileWithMetadata.content);
-                        const inputVoltage = data.map(element => element["v(a) "]);
-                        const outputVoltage = data.map(element => element["v(b) "]);
-                        const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
-                        const ddd = DFT(inputVoltage, samplingFrequency);
-                        const eee = DFT(outputVoltage, samplingFrequency);
-                        debugger;
-                        return ({...fileWithMetadata, data})
-                    })
+                .all(
+                    Array
+                    .from(fileList)
+                    .map(file => readText(file)
+                        .then(async fileWithMetadata => {
+                            const data = await parseCsvString(fileWithMetadata.content);
+                            const inputVoltage = data.map(element => element["v(a) "]);
+                            const outputVoltage = data.map(element => element["v(b) "]);
+                            const samplingFrequency = (1 / (10 * Math.pow(10, -6))).toFixed(2);
+                            const ddd = DFT(inputVoltage, samplingFrequency);
+                            const eee = DFT(outputVoltage, samplingFrequency);
+                            debugger;
+                            return ({...fileWithMetadata, data})
+                        })
+                    )
                 )
-            )
-            .then(obj => {
-                globalObj = obj;
-                console.table(globalObj);
-            });
+                .then(obj => {
+                    globalObj = obj;
+                    console.table(globalObj);
+                });
         }, false);
+        
+        const btnCalculate = document.getElementById("btn-calculate");
+        btnCalculate.addEventListener("click", function () {
+const data = JSON.parse(`[${document.getElementById("samples-input").value}]`);
+
+        
+        });
+        
     </script>
 </body>
 </html>
