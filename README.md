@@ -34,3 +34,23 @@ C1 b 0 10u
 .end
 ```
 -  0.02 / (10*Math.pow(10, -6)) = 2000 samples
+
+### Numpy
+```python
+import numpy as np
+
+
+# Create a sample signal (e.g., sum of two sine waves)
+Fs = 1000 # sampling frequency
+T = 1.0/Fs # sampling interval
+t = np.arange(0, 1, T) # time vector
+signal = np.sin(50 * 2.0 * np.pi * t) + np.sin(120 * 2.0 * np.pi * t)
+
+# Compute the FFT
+N = len(signal)
+yf = [np.fft.fft(signal)]
+xf = [np.fft.fftfreq(N, T)]
+
+print(yf)
+print(xf)
+```
