@@ -39,6 +39,17 @@ C1 b 0 10u
 ```python
 import numpy as np
 
+signal = [1, 2, 2, 0]
+
+N = len(signal)
+yf = np.fft.fft(signal)
+xf = abs(np.fft.fftfreq(N, T)[:N//2])
+
+print(yf)
+print(xf)
+```
+```python
+import numpy as np
 
 # Create a sample signal (e.g., sum of two sine waves)
 Fs = 1000 # sampling frequency
