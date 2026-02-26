@@ -35,6 +35,16 @@ C1 b 0 10u
 ```
 -  0.02 / (10*Math.pow(10, -6)) = 2000 samples
 
+### Python without libraries
+```python
+import cmath
+
+def DFT_equation(arr):
+ return lambda k: sum([value * cmath.exp(complex(0, -1) * 2 * math.pi * k * index/4) for index, value in enumerate(arr)])
+
+print(DFT_equation([1, 2, 2, 0])(1))
+```
+```python
 ### Numpy
 ```python
 import numpy as np
