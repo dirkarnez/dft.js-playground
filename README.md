@@ -43,6 +43,7 @@ def DFT_equation(arr):
  return lambda k: sum([value * cmath.exp(complex(0, -1) * 2 * math.pi * k * index/4) for index, value in enumerate(arr)])
 
 print(DFT_equation([1, 2, 2, 0])(1))
+print(f"{abs(DFT_equation([1, 1, 1, 1])(0)):.4f}")
 ```
 ```python
 ### Numpy
