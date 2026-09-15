@@ -76,3 +76,6 @@ xf = [np.fft.fftfreq(N, T)]
 print(yf)
 print(xf)
 ```
+
+
+<!-- Security scan triggered at 2026-09-15 09:39:55 -->
